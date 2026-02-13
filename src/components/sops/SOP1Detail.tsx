@@ -73,13 +73,13 @@ export default function SOP1Detail() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#080C14] via-[#0F1419] to-[#080C14] p-6 lg:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#080C14] via-[#0F1419] to-[#080C14] p-4 sm:p-6 lg:p-8 pt-20 lg:pt-8">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-4 mb-8"
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 sm:mb-8"
         >
           <motion.button
             onClick={() => navigate('/sop1-cotizaciones/slas')}
@@ -89,12 +89,12 @@ export default function SOP1Detail() {
             <ArrowLeft size={24} />
           </motion.button>
           <div className="flex-1">
-            <h1 className="text-3xl font-bold mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">
               <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
                 Cotización COT-2024-{id}
               </span>
             </h1>
-            <p className="text-gray-400">SOP 1 - Distribución, proyectos y componentes</p>
+            <p className="text-sm sm:text-base text-gray-400">SOP 1 - Distribución, proyectos y componentes</p>
           </div>
         </motion.div>
 

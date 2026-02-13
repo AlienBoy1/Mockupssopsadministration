@@ -176,21 +176,21 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#080C14] via-[#0F1419] to-[#080C14] p-6 lg:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#080C14] via-[#0F1419] to-[#080C14] p-4 sm:p-6 lg:p-8 pt-20 lg:pt-8">
       <div className="max-w-7xl mx-auto">
         {/* Header with improved animation */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
-          className="mb-10 text-center"
+          className="mb-8 lg:mb-10 text-center"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold mb-3">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
             <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
               HTL Electronics
             </span>
           </h1>
-          <p className="text-xl text-gray-300">Tablero de medición</p>
+          <p className="text-lg sm:text-xl text-gray-300">Tablero de medición</p>
           <p className="text-sm text-gray-500 mt-2">
             {t('dashboard.welcome')}, {user?.name}
           </p>
@@ -201,7 +201,7 @@ export default function Dashboard() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8 lg:mb-10"
         >
           {globalKpis.map((kpi, index) => (
             <motion.div
@@ -212,23 +212,23 @@ export default function Dashboard() {
                 scale: 1.02,
                 transition: { duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }
               }}
-              className={`${kpi.bgColor} border ${kpi.borderColor} rounded-2xl p-6 backdrop-blur-sm`}
+              className={`${kpi.bgColor} border ${kpi.borderColor} rounded-xl sm:rounded-2xl p-4 sm:p-6 backdrop-blur-sm`}
             >
-              <div className="flex items-center justify-between mb-3">
-                <div className={`p-3 rounded-xl ${kpi.bgColor} border ${kpi.borderColor}`}>
-                  <kpi.icon className={kpi.color} size={24} />
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <div className={`p-2 sm:p-3 rounded-lg sm:rounded-xl ${kpi.bgColor} border ${kpi.borderColor}`}>
+                  <kpi.icon className={kpi.color} size={20} />
                 </div>
               </div>
               <div>
                 <motion.p 
-                  className="text-3xl font-bold text-white mb-1"
+                  className="text-2xl sm:text-3xl font-bold text-white mb-1"
                   initial={{ scale: 0.5 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2 + index * 0.1, type: "spring", stiffness: 200 }}
                 >
                   {kpi.value}
                 </motion.p>
-                <p className="text-sm text-gray-400">{kpi.title}</p>
+                <p className="text-xs sm:text-sm text-gray-400">{kpi.title}</p>
               </div>
             </motion.div>
           ))}
@@ -308,15 +308,15 @@ export default function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.5 }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center px-4"
         >
           <motion.button
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="relative group"
+            className="relative group w-full sm:w-auto"
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl opacity-75 group-hover:opacity-100 blur transition-all duration-500" />
-            <div className="relative px-10 py-5 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl font-semibold text-white shadow-2xl">
+            <div className="relative px-6 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl font-semibold text-white shadow-2xl text-sm sm:text-base">
               Seguimiento y medición del cumplimiento del SLA (Global)
             </div>
           </motion.button>

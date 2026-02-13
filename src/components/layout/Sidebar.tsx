@@ -40,10 +40,10 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button - Fixed at top */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-[#0F1419] rounded-lg text-gray-300 hover:text-white"
+        className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-[#0F1419]/95 backdrop-blur-sm border border-gray-700 rounded-xl text-gray-300 hover:text-white hover:bg-red-600 transition-all shadow-lg"
         aria-label="Toggle menu"
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -52,7 +52,7 @@ export default function Sidebar() {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-black/50 z-30"
+          className="lg:hidden fixed inset-0 bg-black/60 z-30 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -61,7 +61,8 @@ export default function Sidebar() {
       <motion.aside
         initial={false}
         animate={{ x: isOpen ? 0 : '-100%' }}
-        className="lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-40 w-64 bg-[#0F1419] border-r border-gray-800 flex flex-col"
+        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+        className="lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-40 w-64 bg-[#0F1419] border-r border-gray-800 flex flex-col shadow-2xl"
       >
         {/* Logo */}
         <div className="h-16 flex items-center justify-center border-b border-gray-800 px-4">

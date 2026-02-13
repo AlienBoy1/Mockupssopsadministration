@@ -48,25 +48,25 @@ export default function AdminPanel() {
   ];
 
   return (
-    <div className="p-6 lg:p-8">
+    <div className="p-4 sm:p-6 lg:p-8 pt-20 lg:pt-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
             Panel de Administración
           </h1>
-          <p className="text-gray-400">
+          <p className="text-sm sm:text-base text-gray-400">
             Gestión completa del sistema y configuraciones
           </p>
         </div>
 
         {/* Info Banner */}
-        <div className="bg-blue-600/10 border border-blue-600/30 rounded-xl p-6 mb-8">
+        <div className="bg-blue-600/10 border border-blue-600/30 rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
           <div className="flex items-start gap-3">
-            <Shield className="text-blue-400 flex-shrink-0 mt-1" size={24} />
+            <Shield className="text-blue-400 flex-shrink-0 mt-1" size={20} />
             <div>
-              <h3 className="text-blue-400 font-semibold mb-1">Sistema de Permisos Granular</h3>
-              <p className="text-blue-300 text-sm">
+              <h3 className="text-blue-400 font-semibold mb-1 text-sm sm:text-base">Sistema de Permisos Granular</h3>
+              <p className="text-blue-300 text-xs sm:text-sm">
                 Los permisos son configurables por módulo desde esta sección. No hay roles predefinidos hardcodeados en el sistema.
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function AdminPanel() {
               transition: { staggerChildren: 0.06, delayChildren: 0.1 },
             },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {sections.map((section, index) => (
             <motion.div

@@ -11,11 +11,11 @@ export default function Root() {
   }
 
   return (
-    <div className="flex h-screen bg-[#080C14]">
+    <div className="flex min-h-screen bg-[#080C14]">
       <Sidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col w-full lg:ml-64">
         <ConnectionBanner />
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto p-4 lg:p-8">
           <Outlet />
         </main>
       </div>
