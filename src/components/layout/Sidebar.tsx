@@ -58,11 +58,10 @@ export default function Sidebar() {
       )}
 
       {/* Sidebar */}
-      <motion.aside
-        initial={false}
-        animate={{ x: isOpen ? 0 : '-100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-40 w-64 bg-[#0F1419] border-r border-gray-800 flex flex-col shadow-2xl"
+      <aside
+        className={`fixed lg:static inset-y-0 left-0 z-40 w-64 bg-[#0F1419] border-r border-gray-800 flex flex-col shadow-2xl lg:shadow-none transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        }`}
       >
         {/* Logo */}
         <div className="h-16 flex items-center justify-center border-b border-gray-800 px-4">
@@ -142,7 +141,7 @@ export default function Sidebar() {
             </span>
           </div>
         </div>
-      </motion.aside>
+      </aside>
     </>
   );
 }
