@@ -2266,33 +2266,8 @@
   }
 
   @media (width >= 64rem) {
-    .lg\:static {
-      position: static;
-    }
-  }
-
-  @media (width >= 64rem) {
     .lg\:mb-10 {
       margin-bottom: calc(var(--spacing) * 10);
-    }
-  }
-
-  @media (width >= 64rem) {
-    .lg\:ml-64 {
-      margin-left: calc(var(--spacing) * 64);
-    }
-  }
-
-  @media (width >= 64rem) {
-    .lg\:hidden {
-      display: none;
-    }
-  }
-
-  @media (width >= 64rem) {
-    .lg\:translate-x-0 {
-      --tw-translate-x: calc(var(--spacing) * 0);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
 
@@ -2327,8 +2302,8 @@
   }
 
   @media (width >= 64rem) {
-    .lg\:pt-8 {
-      padding-top: calc(var(--spacing) * 8);
+    .lg\:pt-6 {
+      padding-top: calc(var(--spacing) * 6);
     }
   }
 
@@ -2350,13 +2325,6 @@
     .lg\:text-xl {
       font-size: var(--text-xl);
       line-height: var(--tw-leading, var(--text-xl--line-height));
-    }
-  }
-
-  @media (width >= 64rem) {
-    .lg\:shadow-none {
-      --tw-shadow: 0 0 #0000;
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
 }

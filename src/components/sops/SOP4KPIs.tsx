@@ -6,7 +6,7 @@ export default function SOP4KPIs() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#080C14] via-[#0F1419] to-[#080C14] p-4 sm:p-6 lg:p-8 pt-20 lg:pt-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#080C14] via-[#0F1419] to-[#080C14] p-4 sm:p-6 lg:p-8 pt-20">
       <div className="max-w-5xl mx-auto">
         <motion.button
           onClick={() => navigate('/sop4-prestamo-demo')}

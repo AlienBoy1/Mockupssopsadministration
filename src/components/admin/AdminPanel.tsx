@@ -48,7 +48,7 @@ export default function AdminPanel() {
   ];
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 pt-20 lg:pt-8">
+    <div className="p-4 sm:p-6 lg:p-8 pt-20">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-6 sm:mb-8">
