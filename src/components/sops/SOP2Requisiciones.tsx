@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { Plus, Search, FileDown, Clock, CheckCircle, Package } from 'lucide-react';
+import { Plus, Search, FileDown, Clock, CheckCircle, Package, TrendingUp, AlertCircle } from 'lucide-react';
 import { useI18n } from '../../contexts/I18nContext';
 
 interface Requisicion {
@@ -121,6 +121,12 @@ export default function SOP2Requisiciones() {
   const urgentes = filtered.filter(r => r.urgente).length;
   const completadas = filtered.filter(r => r.status === 'completed').length;
 
+  // Calculate KPIs
+  const totalPendientes = filtered.filter(r => r.status === 'pending' || r.status === 'draft').length;
+  const totalEnProgreso = filtered.filter(r => r.status === 'approved').length;
+  const totalCompletados = filtered.filter(r => r.status === 'completed').length;
+  const totalFueraSLA = filtered.filter(r => r.sla === 'rojo').length;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#080C14] via-[#0F1419] to-[#080C14] p-4 sm:p-6 lg:p-8 pt-20">
       <div className="max-w-7xl mx-auto">
@@ -156,10 +162,67 @@ export default function SOP2Requisiciones() {
         </motion.div>
 
         {/* Stats Summary Cards */}
+        {/* KPI Cards - 4 columns */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4"
+        >
+          <div className="bg-orange-600/10 border border-orange-600/30 rounded-xl p-4 backdrop-blur-sm">
+            <div className="flex items-center justify-between mb-2">
+              <div className="p-2 rounded-lg bg-orange-600/10 border border-orange-600/30">
+                <Clock className="text-orange-400" size={20} />
+              </div>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-white mb-1">{totalPendientes}</p>
+              <p className="text-xs text-gray-400">Total Pendientes</p>
+            </div>
+          </div>
+
+          <div className="bg-blue-600/10 border border-blue-600/30 rounded-xl p-4 backdrop-blur-sm">
+            <div className="flex items-center justify-between mb-2">
+              <div className="p-2 rounded-lg bg-blue-600/10 border border-blue-600/30">
+                <TrendingUp className="text-blue-400" size={20} />
+              </div>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-white mb-1">{totalEnProgreso}</p>
+              <p className="text-xs text-gray-400">En Progreso</p>
+            </div>
+          </div>
+
+          <div className="bg-green-600/10 border border-green-600/30 rounded-xl p-4 backdrop-blur-sm">
+            <div className="flex items-center justify-between mb-2">
+              <div className="p-2 rounded-lg bg-green-600/10 border border-green-600/30">
+                <CheckCircle className="text-green-400" size={20} />
+              </div>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-white mb-1">{totalCompletados}</p>
+              <p className="text-xs text-gray-400">Completados (mes)</p>
+            </div>
+          </div>
+
+          <div className="bg-red-600/10 border border-red-600/30 rounded-xl p-4 backdrop-blur-sm">
+            <div className="flex items-center justify-between mb-2">
+              <div className="p-2 rounded-lg bg-red-600/10 border border-red-600/30">
+                <AlertCircle className="text-red-400" size={20} />
+              </div>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-white mb-1">{totalFueraSLA}</p>
+              <p className="text-xs text-gray-400">Fuera de SLA</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Specific SOP Cards - 3 columns */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
         >
           <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/50">

@@ -4,6 +4,7 @@ import { Toaster } from 'sonner@2.0.3';
 import { I18nProvider } from './contexts/I18nContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { ConnectionProvider } from './contexts/ConnectionContext';
+import './lib/browser-compat';
 
 function App() {
   return (

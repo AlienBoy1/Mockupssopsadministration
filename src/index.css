@@ -1820,6 +1820,11 @@
     backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
   }
 
+  .backdrop-filter {
+    -webkit-backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
+    backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
+  }
+
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -1863,6 +1868,10 @@
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
+  }
+
+  .running {
+    animation-play-state: running;
   }
 
   @media (hover: hover) {
@@ -2333,6 +2342,10 @@
   --primary-400: #60a5fa;
   --primary-500: #3b82f6;
   --primary-600: #2563eb;
+  --htl-orange-500: #f97316;
+  --htl-orange-600: #ea580c;
+  --htl-red-600: #dc2626;
+  --htl-red-700: #b91c1c;
 }
 
 * {
@@ -2342,6 +2355,7 @@
 html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   margin: 0;
   padding: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
@@ -2350,6 +2364,7 @@ html, body {
 body {
   color: #fff;
   background-color: #080c14;
+  min-height: 100dvh;
 }
 
 :focus-visible {
@@ -2375,9 +2390,15 @@ body {
   background: #2a2f38;
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1a1f28 #0f1419;
+}
+
 .skip-link {
   background: var(--primary-600);
   color: #fff;
+  z-index: 9999;
   border-radius: 0 0 4px;
   padding: 8px 16px;
   text-decoration: none;
@@ -2419,6 +2440,36 @@ p {
   line-height: 1.5rem;
 }
 
+@supports (-ms-ime-align: auto) {
+  .bg-clip-text {
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+}
+
+.bg-clip-text {
+  -webkit-text-fill-color: transparent;
+  color: #0000;
+  background-clip: text;
+}
+
+.no-gradient-text .bg-clip-text {
+  color: #f97316 !important;
+  -webkit-text-fill-color: #f97316 !important;
+  background: none !important;
+}
+
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .backdrop-blur-sm, .backdrop-blur, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl {
+    background-color: #111827f2 !important;
+  }
+}
+
+.no-backdrop-filter .backdrop-blur-sm, .no-backdrop-filter .backdrop-blur, .no-backdrop-filter .backdrop-blur-md, .no-backdrop-filter .backdrop-blur-lg, .no-backdrop-filter .backdrop-blur-xl {
+  -webkit-backdrop-filter: none !important;
+  background-color: #111827f2 !important;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -2441,12 +2492,38 @@ p {
   }
 }
 
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
 .animate-fade-in {
   animation: .3s ease-out fadeIn;
 }
 
 .animate-slide-in-up {
   animation: .3s ease-out slideInUp;
+}
+
+.animate-pulse {
+  animation: 2s cubic-bezier(.4, 0, .6, 1) infinite pulse;
+}
+
+html {
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@supports (-ms-ime-align: auto) {
+  * {
+    transform: translateZ(0);
+  }
 }
 
 @media print {
@@ -2797,11 +2874,5 @@ p {
 @keyframes spin {
   to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes pulse {
-  50% {
-    opacity: .5;
   }
 }
